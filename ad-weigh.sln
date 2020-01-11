@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28306.52
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ad-weigh", "ad-weigh\ad-weigh.pyproj", "{CA456C22-3FD7-4563-A029-3E57A7BED00A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA456C22-3FD7-4563-A029-3E57A7BED00A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA456C22-3FD7-4563-A029-3E57A7BED00A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA456C22-3FD7-4563-A029-3E57A7BED00A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA456C22-3FD7-4563-A029-3E57A7BED00A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DE759A52-E9C0-4FDB-8B75-DB7C3EC4C3D7}
+	EndGlobalSection
+EndGlobal
