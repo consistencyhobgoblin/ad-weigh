@@ -14,7 +14,7 @@ def home(request):
         request,
         'app/index.html',
         {
-            'title':'Home Page',
+            'title':'Ad-Weigh',
             'year':datetime.now().year,
         }
     )
@@ -27,7 +27,7 @@ def contact(request):
         'app/contact.html',
         {
             'title':'Contact',
-            'message':'Your contact page.',
+            'message':'Ad-Weigh Contact Page',
             'year':datetime.now().year,
         }
     )
@@ -40,7 +40,7 @@ def about(request):
         'app/about.html',
         {
             'title':'About',
-            'message':'Your application description page.',
+            'message':'Ad-Weigh is a generic digital ad metric entry tool and an ad taxonomy maintenance tool.',
             'year':datetime.now().year,
         }
     )

@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'app',
     # Add your apps here to enable them
     'django.contrib.admin',
+    'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
