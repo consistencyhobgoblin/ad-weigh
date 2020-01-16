@@ -46,7 +46,8 @@ class metric_type(models.Model):
 class metric_value(models.Model):
     """an object to store the value of the metric"""
     value_metric_type = models.ForeignKey(metric_type)
-    when_metric_occurred = models.DateTimeField('metric date', null=True, blank=True)
+    when_metric_begin = models.DateTimeField('metric begin date', null=True, blank=True)
+    when_metric_end = models.DateTimeField('metric end date', null=True, blank=True)
     numeric_value = models.FloatField('number value', default=0.0)
     string_value = models.CharField('text value', max_length=1000, null=True, blank=True)
     boolean_value = models.NullBooleanField('true-false value')
