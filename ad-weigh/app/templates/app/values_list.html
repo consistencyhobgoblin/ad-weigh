@@ -1,0 +1,26 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1>Metric Values Entry</h1>
+    <p class="lead">Select a value to edit or press + to add a value</p>
+</div>
+<br/>
+
+{% if current_values_list %}
+<table class="table table-hover">
+    <tbody>
+        {% for value in current_values_list %}
+        <tr>
+            <td>
+                <a href="{% url 'app:values_list' type.id %}">{{value.when_metric_end}} - {{value_metric_type.type_name}}</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endif %}
+
+{% endblock %}

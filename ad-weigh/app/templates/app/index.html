@@ -3,19 +3,24 @@
 {% block content %}
 
 <div class="jumbotron">
-    <h1>Ad-Weigh</h1>
-    <p class="lead">Ad-Weigh is a digital ad metric entry and an ad taxonomy maintenance tool</p>
-    <p><a href="https://www.innoceanusa.com/" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+    <h1>Metric Entry</h1>
+    <p class="lead">Select a category and type to enter</p>
 </div>
+<br/>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Capabilities</h2>
-        <p>
-            Ad-Weigh provides the means to enter generic ad metric values.  It also allows for the unification of ad taxonomy across partner platforms.
-        </p>
-        <p><a class="btn btn-default" href="http://www.innoceanusa.com/technology">Learn more &raquo;</a></p>
-    </div>
-</div>
+{% if current_types_list %}
+<table class="table table-hover">
+    <tbody>
+        {% for type in current_types_list %}
+        <tr>
+            <td>
+                <a href="{% url 'app:type_detail' type.id %}">{{type.type_metric_category.category_name}} - {{type.type_name}}</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endif %}
 
 {% endblock %}

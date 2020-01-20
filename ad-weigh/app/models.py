@@ -11,7 +11,7 @@ class metric_grouping(models.Model):
     enum_grouping_type = models.CharField(max_length=50)
 
     def __unicode__(self):
-        """Returns a string representation of a poll."""
+        """Returns a string representation of a grouping."""
         return self.grouping_name
 
     def __str__(self):
@@ -23,7 +23,7 @@ class metric_category(models.Model):
     normalized_table_name = models.CharField('datamart table', max_length=100, blank=True)
 
     def __unicode__(self):
-        """Returns a string representation of a poll."""
+        """Returns a string representation of a category."""
         return self.category_name
 
     def __str__(self):
@@ -37,7 +37,7 @@ class metric_type(models.Model):
     enum_datatype = models.CharField('datatype', max_length=50, blank=True)
 
     def __unicode__(self):
-        """Returns a string representation of a poll."""
+        """Returns a string representation of a type."""
         return self.type_name
 
     def __str__(self):
@@ -53,4 +53,10 @@ class metric_value(models.Model):
     boolean_value = models.NullBooleanField('true-false value')
     is_rate = models.BooleanField(default=False)
     notes = models.TextField('notes', blank=True)
-  
+ 
+    def __unicode__(self):
+        """Returns a string representation of a metric_value."""
+        return str(self.when_metric_end) + ' ' + value_metric_type.type_name
+
+    def __str__(self):
+        return  str(self.when_metric_end) + ' ' + value_metric_type.type_name 
