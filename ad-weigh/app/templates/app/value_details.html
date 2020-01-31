@@ -1,0 +1,20 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>Editing: {{ metric_value.value_metric_type.type_metric_category.category_name }} - {{metric_value.value_metric_type.type_name}}</h2>
+<br />
+
+{% if error_message %}
+<p class="text-danger">{{error_message}}</p>
+{% endif %}
+
+<form action="{% url 'app:save_value' metric_value.id %}" method="post">
+{% csrf_token %}
+
+    <br />
+    <button class="btn btn-primary" type="submit">Save</button>
+    <button class="btn btn-primary" type="submit">Add</button>
+</form>
+
+{% endblock %}

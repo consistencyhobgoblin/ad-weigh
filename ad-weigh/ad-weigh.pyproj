@@ -65,6 +65,7 @@
     <Content Include="app\templates\app\loggedoff.html" />
     <Content Include="app\templates\app\type_details.html" />
     <Content Include="app\templates\app\values_list.html" />
+    <Content Include="app\templates\app\value_details.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />

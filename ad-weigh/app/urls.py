@@ -28,10 +28,10 @@ urlpatterns = [
         name='type_detail'),
 
     ## Routing for a metric_value detail page, which use URLs in the form <metric_value_id>/,
-    ## where the id number is captured as a group named "pk".
-    #url(r'^(?P<pk>\d+)/$',
+    ## where the id number is captured as a group named "metric_value_id".
+    #url(r'^(?P<metric_value_id>\d+)/$',
     #    app.views.ValueDetailView.as_view(
-    #        template_name='app/value_detail.html'),
+    #        template_name='app/value_detaisl.html'),
     #    name='value_detail'),
 
     ## Routing for <poll_id>/results pages, again using a capture group

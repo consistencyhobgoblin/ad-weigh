@@ -73,11 +73,11 @@ class ValueDetailView(DetailView):
         context['year'] = datetime.now().year
         return context
 
-def save_value(request, type_id):
+def save_value(request, value_id):
     context_object_name = metric_value
     """Handles value persistence. Validates input and updates the repository."""
 
-    oMetricType = get_object_or_404(metric_type, pk=value_id)
+    oMetricValue = get_object_or_404(metric_value, pk=value_id)
     try:
         oSelectedValue = oMetricType.metric_value_set.get(ProcessLookupError=request.Post['metric_value'])
     except (KeyError, metric_value.DoesNotExist):
