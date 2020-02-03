@@ -14,6 +14,17 @@ from datetime import datetime
 from os import path
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from extra_views import ModelFormSetView
+from app.forms import ValuesEntryForm
+
+#from extra_views import CreateWithInlinesView
+#from extra_views import UpdateWithInlinesView
+#from extra_views import InlineFormSetFactory
+
+
+#class ItemInline(InlineFormSetFactory):
+#    model = Item
+#    fields = ['sku', 'price', 'name']
 
 #def home(request):
 #    """Renders the home page."""
@@ -73,6 +84,40 @@ class ValueDetailView(DetailView):
         context['year'] = datetime.now().year
         return context
 
+class ValueFormSetView(ModelFormSetView):
+    model = metric_value
+    fields = ['when_metric_begin', 'when_metric_end', 'numeric_value', 'notes']
+    template_name = 'value_formset.html'
+    form_class = ValuesEntryForm
+
+    def get_queryset(self):
+        pk = self.kwargs.get('pk')
+        return self.model.objects.filter(value_metric_type_id=pk)
+        #form_class = forms.EditListForm
+
+#class ValueInline(InlineFormSetFactory):
+#    model = metric_value
+#    fields = ['when_metric_begin', 'when_metric_end', 'numeric_value', 'string_value', 'boolean_value', 'notes']
+
+#class CreateValueView(CreateWithInlinesView):
+#    model = Order
+#    inlines = [ItemInline, ContactInline]
+#    fields = ['customer', 'name']
+#    template_name = 'order_and_items.html'
+
+#    def get_success_url(self):
+#        return self.object.get_absolute_url()
+
+
+#class UpdateOrderView(UpdateWithInlinesView):
+#    model = Order
+#    inlines = [ItemInline, ContactInline]
+#    fields = ['customer', 'name']
+#    template_name = 'order_and_items.html'
+
+#    def get_success_url(self):
+#        return self.object.get_absolute_url()
+
 def save_value(request, value_id):
     context_object_name = metric_value
     """Handles value persistence. Validates input and updates the repository."""
@@ -81,8 +126,8 @@ def save_value(request, value_id):
     try:
         oSelectedValue = oMetricType.metric_value_set.get(ProcessLookupError=request.Post['metric_value'])
     except (KeyError, metric_value.DoesNotExist):
-        return render(request, 'app/type_details.html', {
-            'title': 'Type Detail',
+        return render(request, 'app/value_formset.html', {
+            'title': 'Values List',
             'year': datetime.now().year,
             'metric_type': oMetricType,
             'error_message': "Value not found",

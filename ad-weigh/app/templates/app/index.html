@@ -14,7 +14,7 @@
         {% for type in current_types_list %}
         <tr>
             <td>
-                <a href="{% url 'app:type_detail' type.id %}">{{type.type_metric_category.category_name}} - {{type.type_name}}</a>
+                <a href="{% url 'app:value_formset' type.id %}">{{type.type_metric_category.category_name}} - {{type.type_name}}</a>
             </td>
         </tr>
         {% endfor %}

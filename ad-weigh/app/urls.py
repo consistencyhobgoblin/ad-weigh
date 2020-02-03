@@ -22,10 +22,15 @@ urlpatterns = [
 
     # Routing for a metric_type detail page, which use URLs in the form <pk>/,
     # where the id number is captured as a group named "pk".
+    #url(r'^(?P<pk>\d+)/$',
+    #    app.views.TypeDetailView.as_view(
+    #        template_name='app/type_details.html'),
+    #    name='type_detail'),
+
     url(r'^(?P<pk>\d+)/$',
-        app.views.TypeDetailView.as_view(
-            template_name='app/type_details.html'),
-        name='type_detail'),
+        app.views.ValueFormSetView.as_view(
+            template_name='app/value_formset.html'),
+        name='value_formset'),    
 
     ## Routing for a metric_value detail page, which use URLs in the form <metric_value_id>/,
     ## where the id number is captured as a group named "metric_value_id".
