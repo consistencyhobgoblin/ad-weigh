@@ -9,17 +9,21 @@
 <p class="text-danger">{{error_message}}</p>
 {% endif %}
 
-<form method="post">
-    {% for row in formset %}
-        When Begin: {{ row.when_metric_begin}}
-        When End: {{ row.when_metric_end}}
-        Number: {{ row.numeric_value }}
-        Notes: {{ row.notes }}
+<form method="post">{% csrf_token %}
+    {{formset.management_form}}
+    {% for form in formset %}    
+        {% for hidden_field in form.hidden_fields %}
+        {{ hidden_field }}
+        {% endfor %}
+        When Begin: {{ form.when_metric_begin}}
+        When End: {{ form.when_metric_end}}
+        Number: {{ form.numeric_value }}
+        Notes: {{ form.notes }}
         {{''|linebreaks}}
     {% endfor %}
    </ br>
    </ br>
-   <input type="submit" value="Submit" />
+   <input type="submit" class="btn btn-primary" value="Save" />
 
 </form>
 

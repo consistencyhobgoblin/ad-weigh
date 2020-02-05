@@ -16,6 +16,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from extra_views import ModelFormSetView
 from app.forms import ValuesEntryForm
+from django.contrib import messages
 
 #from extra_views import CreateWithInlinesView
 #from extra_views import UpdateWithInlinesView
@@ -92,8 +93,29 @@ class ValueFormSetView(ModelFormSetView):
 
     def get_queryset(self):
         pk = self.kwargs.get('pk')
-        return self.model.objects.filter(value_metric_type_id=pk)
-        #form_class = forms.EditListForm
+        #return self.model.objects.filter(value_metric_type_id=pk)
+        return super(ModelFormSetView, self).get_queryset().filter(value_metric_type_id=pk)
+
+    def get_success_url(self):
+        pk = self.kwargs.get('pk')
+        return reverse('app:value_formset', args=(pk))
+
+    def formset_valid(self, formset):
+        messages.success(self.request, "Updated")
+        nMetricTypeId = self.kwargs.get('pk')
+        oMetricType = metric_type.objects.get(id=nMetricTypeId)
+        for form in formset:
+            oMetricValue = form.save(commit=False)
+            oMetricValue.value_metric_type = oMetricType
+            oMetricValue.save()
+
+        return HttpResponseRedirect(self.get_success_url())
+
+    def formset_invalid(self, formset):
+        messages.error(self.request, "Error dummy")
+        return self.render_to_response(self.get_context_data(formset=formset))
+
+
 
 #class ValueInline(InlineFormSetFactory):
 #    model = metric_value
