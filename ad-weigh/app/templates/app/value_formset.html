@@ -10,17 +10,39 @@
 {% endif %}
 
 <form method="post">{% csrf_token %}
-    {{formset.management_form}}
-    {% for form in formset %}    
-        {% for hidden_field in form.hidden_fields %}
-        {{ hidden_field }}
-        {% endfor %}
-        When Begin: {{ form.when_metric_begin}}
-        When End: {{ form.when_metric_end}}
-        Number: {{ form.numeric_value }}
-        Notes: {{ form.notes }}
-        {{''|linebreaks}}
-    {% endfor %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Metric Begin</th>
+                <th>Metric End</th>
+                <th>Metric Value</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{formset.management_form}}
+            {% for form in formset %}  
+                {% for hidden_field in form.hidden_fields %}
+                    {{ hidden_field }}
+                {% endfor %}
+                <tr>
+                    <td>
+                        {{ form.when_metric_begin}}
+                    </td>
+                    <td>
+                        {{ form.when_metric_end}}
+                    </td>
+                    <td>
+                        {{ form.numeric_value }}
+                    </td>
+                    <td>
+                        {{ form.notes }}
+                    </td>
+                    {{''|linebreaks}}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
    </ br>
    </ br>
    <input type="submit" class="btn btn-primary" value="Save" />
